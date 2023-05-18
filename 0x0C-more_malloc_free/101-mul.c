@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 #include <stdlib.h>
 
@@ -33,7 +32,7 @@ int _isNumber(char *argv)
 }
 
 /**
- * _calloc - allocate array of size * nmemb.
+ *_calloc - allocate array of size * nmemb.
  * @nmemb: number of elements.
  * @size: size of element.
  * Return: pointer to array.
@@ -78,13 +77,13 @@ void *mul_array(char *a1, int len1, char a2, char *a3, int lena)
 		k--;
 	}
 
-	while (mul != 0)
-	{
-		mul += a3[k] - '0';
-		a3[k] = (mul % 10) + '0';
-		mul /= 10;
-		k--;
-	}
+		while (mul != 0)
+		{
+			mul += a3[k] - '0';
+			a3[k] = (mul % 10) + '0';
+			mul /= 10;
+			k--;
+		}
 
 	return (a3);
 }
@@ -129,8 +128,10 @@ int main(int argc, char *argv[])
 		}
 		exit(98);
 	}
-	for (len1 = 0; argv[1][len1]; len1++);
-	for (len2 = 0; argv[2][len2]; len2++);
+	for (len1 = 0; argv[1][len1]; len1++)
+	;
+	for (len2 = 0; argv[2][len2]; len2++)
+	;
 	lenres = len1 + len2;
 	tabres = _calloc(lenres, sizeof(int));
 	if (tabres == NULL)
@@ -140,8 +141,8 @@ int main(int argc, char *argv[])
 	}
 	for (i = len2 - 1, c = 0; i >= 0; i--)
 	{
-		tabres = mul_array(argv[1], len1, argv[2][i], tabres, (lenres - 1 - c));
-		c++;
+	tabres = mul_array(argv[1], len1, argv[2][i], tabres, (lenres - 1 - c));
+	c++;
 	}
 	print_array(tabres, lenres);
 	free(tabres);
